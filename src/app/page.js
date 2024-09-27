@@ -8,6 +8,7 @@ export default function Home() {
   const [data, setData] = useState(null);
   const [result, setResult] = useState(null);
   const ref = useRef(null)
+  const [value, setValue] = useState(null);  
 
 
   useEffect(()=>{
@@ -30,6 +31,7 @@ export default function Home() {
     })
    
     setResult(matchResult?.['קו חלוקה '] || '')
+    setValue( ref.current.value)
   }
  
   return (
@@ -47,13 +49,13 @@ export default function Home() {
 
       {result &&(
         <>
-      <p>רחוב: {ref.current.value}</p>
+      <p>רחוב: {value}</p>
       <p>קו חלוקה: {result}</p> 
       </>)
       }
 
       {result === '' &&(
-        <p>קו חלוקה - {ref.current.value} לא נמצא</p>
+        <p>קו חלוקה - {value} לא נמצא</p>
       )}
       
       
